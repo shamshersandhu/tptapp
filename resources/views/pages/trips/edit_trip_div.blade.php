@@ -1,124 +1,230 @@
 <div class="modal" tabindex="-2" id="mdl_edit_trp" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div style="background-color:{{$MODAL_BG1}};padding:6px 12px 4px 12px;" class="modal-header">
-                <h5 id="edittriptitle" tclass="modal-title"></h5>
+            <div style="background-color:#C4BBF5;padding:6px 12px 4px 12px;" class="modal-header">
+                <img src={{ URL::to('/') }}/public/assets/images/trkmov.png  alt="Truck" style="margin-right:16px;margin-bottom:-3px;margin-top:-7px">
+                <h5 id="edittrptitle" class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div style="background-color:{{$MODAL_BG2}};padding:6px 12px 4px 12px;" id="trp_area_edit" class="modal-body">
+            <div style="background-color:#D8D1F7;padding:6px 12px 4px 12px;" id="trp_area_edit" class="modal-body">
                 <div id="msgdivedit"></div>
                 <form id="edittrp">
-                    <input type="hidden" name="_token" id="etoken" value="{{ csrf_token() }}">
+                    <input type="hidden" id="etoken" value="{!! csrf_token() !!}">
+                    <input type="hidden" id="ecreator" value="{{Auth::user()->name}}">
                     <input type="hidden" id="eid">
-                    <div class="form-group">
-                        <div class="form-row">
+                    <div class="form-group myformgroup2">
+                        <div class="form-row" style="">
                             <div class="col">
-                                <label class="mylabel" for="etruck">Reg. Num.</label>
-                                <select class="form-control" id="etruck">
-                                    <option value=""></option>
-                                    @foreach($trucks as $truck)
-                                        <option value="{{$truck->id}}">{{$truck->regnum}}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Truck</span>
+                                    </div>
+                                    <select class="form-control form-control-sm" id="etruck">
+                                            <option value=""></option>
+                                            @foreach($trucks as $truck)
+                                                <option value="{{$truck->id}}">{{$truck->regnum}}</option>
+                                            @endforeach                                                                          
+                                                                    </select>
+                                </div>
                             </div>
                             <div class="col">
-                                <label class="mylabel" for="eorigin">Origin</label>
-                                <select class="form-control" id="eorigin">
-                                    <option value=""></option>
-                                    @foreach($locations as $origin)
-                                        <option value="{{$origin->id}}">{{$origin->name}}</option>
-                                    @endforeach 
-                                </select>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Driver1</span>
+                                    </div>
+                                    <select class="form-control form-control-sm" id="edriver1">
+                                                                <option value=""></option>
+                                                                @foreach($drivers as $driver)
+                                                                <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                                            @endforeach                                                                
+                                                            </select>
+                                </div>
                             </div>
                             <div class="col">
-                                <label class="mylabel" for="edest">Destination</label>
-                                <select class="form-control" id="edest">
-                                    <option value=""></option>
-                                    @foreach($locations as $dest)
-                                        <option value="{{$dest->id}}">{{$dest->name}}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Driver2</span>
+                                    </div>
+                                    <select class="form-control form-control-sm" id="edriver2">
+                                                                <option value="None">None</option>
+                                                                @foreach($drivers as $driver)
+                                                                <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                                            @endforeach 
+                                                            </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <label class="mylabel" for="edistance">Distance</label>
-                                <input class="form-control" id="edistance" type="number" value="0" placeholder="Dist. in KMs">
 
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="edriver1">Driver 1</label>
-                                <select class="form-control" id="edriver1">
-                                    <option value=""></option>
-                                    @foreach($drivers as $driver)
-                                        <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                    @endforeach 
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="edriver2">Driver 2</label>
-                                <select class="form-control" id="edriver2">
-                                        <option value=""></option>
-                                        @foreach($drivers as $driver)
-                                            <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                        @endforeach 
-                                    </select>
-                            </div>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row" style="">
                             <div class="col">
-                                <label class="mylabel" for="einvoice">Invoice Num</label>
-                                <input class="form-control" id="einvoice" maxlength="40" placeholder="Invoice Num.">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="eproduct">Product Details</label>
-                                <input class="form-control" id="eproduct" maxlength="60" placeholder="Product Details">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="eqtyload">Qty Loaded</label>
-                                <input class="form-control" id="eqtyload" type="number"  placeholder="Load Qty">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="eqtydel">Qty Delivered</label>
-                                <input class="form-control" id="eqtydel" type="number"  placeholder="Del Qty">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <label class="mylabel" for="epickdate">Pickup DateTime</label>
-                                <input class="form-control" id="epickdate" type="date">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="epicktime">-</label>
-                                <input class="form-control" id="epicktime" type="time">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="edeldate">Delivery DateTime</label>
-                                <input class="form-control" id="edeldate" type="date">
-                            </div>
-                            <div class="col">
-                                <label class="mylabel" for="edeltime">-</label>
-                                <input class="form-control" id="edeltime" type="time">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="mylabel" for="enotes">Notes</label>
-                            <textarea class="form-control" id="enotes" maxlength="254" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col text-center">
-                                    <button onclick=save_edit_trp(); type="submit" class="btn btn-sm btn-info">Save</button>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Origin</span>
+                                    </div>
+                                    <select onchange="getdistance('edit')" class="form-control form-control-sm" id="eorigin">
+                                            @foreach($locations as $origin)
+                                            <option value="{{$origin->id}}">{{$origin->name}}</option>
+                                        @endforeach                                                               
+                                                                            </select>
                                 </div>
-                                <div class="col text-center">
-                                    <button type="submit" class="btn btn-sm btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Arrival-Date Org</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="eorgarrdt" style="background-color: #fff;" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Load Date</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="eloaddate" style="background-color: #fff;" readonly>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row" style="">
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Destination</span>
+                                    </div>
+                                    <select onchange="getdistance('edit')" class="form-control form-control-sm" id="edest">
+                                            @foreach($locations as $dest)
+                                            <option value="{{$dest->id}}">{{$dest->name}}</option>
+                                        @endforeach                                                           
+                                                                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Arrival-Date Dst</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="earrdate" style="background-color: #fff;" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Delivery Date</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="edeldate" style="background-color: #fff;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="">
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Distance</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="edistance" style="background-color: #fff;">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">PO Number</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="eponum" style="background-color: #fff;">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Invoice Number</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="einvoice" style="background-color: #fff;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="">
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Product</span>
+                                    </div>
+                                    <input class="form-control form-control-sm" id="eproduct" style="background-color: #fff;">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Loaded Qty</span>
+                                    </div>
+                                    <input onChange="chkqty('edit');" class="form-control form-control-sm" type="number" id="eqtyload" style="background-color: #fff;">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                                                                    <select id="eunit">
+                                                                                            <option value="KGs" selected>KGs</option>
+                                                                                            <option value="LTs" selected>LTs</option>
+                                                                                            <option value="MTs">MTs</option>
+                                                                                        </select>
+                                                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Delivered Qty</span>
+                                    </div>
+                                    <input onChange="chkqty('edit');" class="form-control form-control-sm" type="number" id="eqtydel" style="background-color: #fff;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="">
+                            <div class="col">
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">GST Party</span>
+                                    </div>
+                                    <select id="egstparty">
+                                                                        <option value="Consignor" >Consignor</option>
+                                                                        <option value="Consignee" selected>Consignee</option>
+                                                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Shortage</span>
+                                    </div>
+                                    <input readonly class="form-control form-control-sm" type="number" id="eshortage" style="background-color: #fff;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group myformgroup2">
+                        <div class="form-row" style="margin-bottom:0px;">
+                            <div class="col">
+                                <label class="mylabel" for="notes">Notes</label>
+                                <textarea class="form-control form-control-sm" id="enotes" maxlength="254" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="form-row " style="margin-bottom:opx; ">
+                            <div class="col ">
+                            </div>
+                            <div class="col text-center ">
+                                <button style="width:70px;font-size:13px;margin-top:7px;" onclick=save_edit_trp(); type="submit" class="btn btn-sm btn-info ">Save</button>
+                            </div>
+                            <div class="col text-center ">
+                                <button style="width:70px;font-size:13px;margin-top:7px; " type="submit " class="btn btn-sm btn-danger" data-dismiss="modal ">Cancel</button>
+                            </div>
+                            <div class="col ">
+                            </div>
+                        </div>
+                    </div>
                 </form>
-                </div>
             </div>
         </div>
     </div>

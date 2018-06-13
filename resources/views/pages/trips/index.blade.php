@@ -17,7 +17,7 @@ $MODAL_BG1="#C4BBF5";
             <th>Destination</th>
             <th>Driver</th>
             <th>Product</th>
-            <th>Pick Date</th>
+            <th>Load Date</th>
             <th>Invoice</th>
 
             <th class="no-sort text-center">
@@ -35,7 +35,7 @@ $MODAL_BG1="#C4BBF5";
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->dest_name}}</td>
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->driver1_name}}</td>
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->product}}</td>
-            <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->pickdate}}</td>
+            <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{substr($trip->lr_date,0,10)}}</td>
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->invoice}}</td>
             <td style="width:80px;" class="text-center ">
                 <input title="Edit Record" type="image" onclick="edit_trp('{{$trip->id}}')" src={{ URL::to('/') }}/public/assets/images/edit.png alt="Edit">
@@ -52,5 +52,5 @@ $MODAL_BG1="#C4BBF5";
 
 @section('pagespecificscripts')
     <script src="{{ asset('js/trips.js') }}"></script>
+  {{--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1CUHmTHvyo1csI1_jAtl2jtY7Z2smVFo"></script> --}}
 @stop
-

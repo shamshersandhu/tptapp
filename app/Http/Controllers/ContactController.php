@@ -18,7 +18,10 @@ class contactController extends Controller
     {
         $this->middleware('auth');
 
+        $states = \DB::table('states')->get();
+        View::share('states', $states);
     }
+
 
     public function index()
     {
@@ -26,25 +29,12 @@ class contactController extends Controller
         return view('pages.contacts.index')->with('contacts', $contacts)->with("type","Contact");
     }
 
+
     public function show(Request $request)
     {
         $id = $request->id;
-        $contacts = contact::whereid($id)->first();
-        $resp = "<table><tr><td><small>ID</smallo></td><td>:</td><td>$contacts->id</td></tr>";
-        $resp .= "<tr><td><small>Name</small></td><td>:</td><td>$contacts->name</td></tr>";
-        $resp .= "<tr><td><small>Address 1</small></td><td>:</td><td>$contacts->add11</td></tr>";
-        $resp .= "<tr><td></td><td>:</td><td>$contacts->add12</td></tr>";
-        $resp .= "<tr><td><small>Address 2</small></td><td>:</td><td>$contacts->add21</td></tr>";
-        $resp .= "<tr><td></td><td>:</td><td>$contacts->add22</td></tr>";
-        $resp .= "<tr><td><small>Type</small></td><td>:</td><td>$contacts->type</td></tr>";
-        $resp .= "<tr><td><small>DL Number</small></td><td>:</td><td>$contacts->dl_num</td></tr>";
-        $resp .= "<tr><td><small>DL State</small></td><td>:</td><td>$contacts->dl_state</td></tr>";
-        $resp .= "<tr><td><small>DL Exp. Date</small></td><td>:</td><td>$contacts->dl_exp</td></tr>";
-        $resp .= "<tr><td><small>Phone 1</small></td><td>:</td><td>$contacts->phone1</td></tr>";
-        $resp .= "<tr><td><small>Phone 2</small></td><td>:</td><td>$contacts->phone2</td></tr>";
-        $resp .= "<tr><td><small>Email</small></td><td>:</td><td>$contacts->email</td></tr>";
-        $resp .= "<tr><td><small>Notes</small></td><td>:</td><td>$contacts->notes</td></tr></table>";
-        return $resp;
+        $contact = contact::whereid($id)->first();
+        return $contact;
         //print_r($contacts);
     }
 
@@ -67,19 +57,24 @@ class contactController extends Controller
         'phone1' => 'required',
         ]); */
         $con = new contact;
-        $con->name = $request->input('name');
-        $con->add11 = $request->input('add11');
-        $con->add12 = $request->input('add12');
-        $con->add21 = $request->input('add21');
-        $con->add22 = $request->input('add22');
-        $con->phone1 = $request->input('phone1');
-        $con->phone2 = $request->input('phone2');
-        $con->type = $request->input('type');
-        $con->dl_num = $request->input('dl_num');
-        $con->dl_state = $request->input('dl_state');
-        $con->dl_exp = $request->input('dl_exp');
-        $con->email = $request->input('email');
-        $con->notes = $request->input('notes');
+        $con->name= $request->input('name');
+        $con->cdesc= $request->input('cdesc');
+        $con->add11= $request->input('add11');
+        $con->city1= $request->input('city1');
+        $con->state1= $request->input('state1');
+        $con->pin1= $request->input('pin1');
+        $con->add22= $request->input('add22');
+        $con->city2= $request->input('city2');
+        $con->state2= $request->input('state2');
+        $con->pin2= $request->input('pin2');
+        $con->type= $request->input('type');
+        $con->dl_num= $request->input('dl_num');
+        $con->dl_state= $request->input('dl_state');
+        $con->dl_exp= $request->input('dl_exp');
+        $con->phone1= $request->input('phone1');
+        $con->phone2= $request->input('phone2');
+        $con->email= $request->input('email');
+        $con->notes= $request->input('notes');
         try {
             $ret = $con->save();
             $msg = "Record Added Successfully";
@@ -107,19 +102,25 @@ class contactController extends Controller
     public function edit(Request $request)
     {
         $con = new contact();
-        $con->name = $request->input('name');
-        $con->add11 = $request->input('add11');
-        $con->add12 = $request->input('add12');
-        $con->add21 = $request->input('add21');
-        $con->add22 = $request->input('add22');
-        $con->phone1 = $request->input('phone1');
-        $con->phone2 = $request->input('phone2');
-        $con->type = $request->input('type');
-        $con->dl_num = $request->input('dl_num');
-        $con->dl_state = $request->input('dl_state');
-        $con->dl_exp = $request->input('dl_exp');
-        $con->email = $request->input('email');
-        $con->notes = $request->input('notes');
+        $con->id= $request->input('id');
+        $con->name= $request->input('name');
+        $con->cdesc= $request->input('cdesc');
+        $con->add11= $request->input('add11');
+        $con->city1= $request->input('city1');
+        $con->state1= $request->input('state1');
+        $con->pin1= $request->input('pin1');
+        $con->add22= $request->input('add22');
+        $con->city2= $request->input('city2');
+        $con->state2= $request->input('state2');
+        $con->pin2= $request->input('pin2');
+        $con->type= $request->input('type');
+        $con->dl_num= $request->input('dl_num');
+        $con->dl_state= $request->input('dl_state');
+        $con->dl_exp= $request->input('dl_exp');
+        $con->phone1= $request->input('phone1');
+        $con->phone2= $request->input('phone2');
+        $con->email= $request->input('email');
+        $con->notes= $request->input('notes');
         try {
             $con->exists = true;
             $con->id=$request->input('id');

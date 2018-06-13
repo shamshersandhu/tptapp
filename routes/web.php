@@ -34,11 +34,19 @@ Route::get('/users/{id}', function ($id) {
  Route::post('trucks/edit', 'TruckController@edit');
  Route::post('trucks/destroy', 'TruckController@destroy');
  Route::get('trucks/edittrk/{id}', 'TruckController@edittrk');
+ Route::get('trucks/show/{id}', 'TruckController@show');
+ Route::get('trucks/printtrk/{id}', 'TruckController@printtrk');
+
 
  Route::post('trips/store', 'TripController@store');
  Route::post('trips/edit', 'TripController@edit');
  Route::post('trips/destroy', 'TripController@destroy');
  Route::get('trips/edittrp/{id}', 'TripController@edittrp');
+ Route::get('trips/show/{id}', 'TripController@show');
+ Route::get('trips/printtrp/{id}', 'TripController@printtrp');
+ Route::get('trips/getdistance/{org}/{dest}', 'TripController@getdistance');
+
+
 
  
 Auth::routes();

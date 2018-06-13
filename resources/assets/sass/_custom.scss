@@ -1,17 +1,88 @@
-body {
-    background-color: #eee;
-}
+body {    background: white;}
+
+#menu {    display: none;}
+#wrapper,
+#content {width: auto;margin: 0 5%;padding: 0;border: 0;float: none !important;color: black;background: transparent;}
+.form-control::-webkit-input-placeholder {    color: #ccc;}
+.form-control:-moz-placeholder {    color: #ccc;}
+.form-control::-moz-placeholder {    color: #ccc;}
+.form-control:-ms-input-placeholder {    color: #ccc;}
+.form-control::-ms-input-placeholder {    color: #ccc;}
 
 .mylabel {
-    font-size: 12px;
-    margin-bottom: 1px;
+    font-size: 10px;
+    margin-bottom: -2px;
+    margin-top: 5px;
+    color: #444;
 }
 
-.form-control::-webkit-input-placeholder { color: #ccc; }  /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: #ccc; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: #ccc; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: #ccc; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: #ccc; }  /* Microsoft Edge */
+table.dataTable thead th, table.dataTable thead td {
+    padding: 1px 1px !important;
+    //font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    background-color: rgb(205, 225, 241);
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 1px 4px !important;
+   // font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px !important;
+}
+
+
+input,button,select,optgroup,textarea, .input-group-text {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px !important;
+    line-height: inherit;
+    height:28px;
+}
+
+select {
+    height:28px !important;
+}
+
+textarea {
+    height:70px !important;
+ }
+
+.myformgroup {
+    margin-bottom: 3px;
+    padding: 6px;
+    border: 1px solid rgba(140, 15, 140, 0.28);
+}
+
+.myformgroup2 {
+    border: 1px solid rgba(140, 15, 140, 0.28);
+    padding: 6px;
+}
+
+.prlabel {
+    font-size: 10px;
+    border: 2px solid grey;
+    border-right: 1px solid grey;
+    white-space: nowrap;
+    background-color: #ccc;
+}
+
+.prtext {
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid grey;
+    border-left: 1px solid grey;
+    white-space: wrap;
+}
+
+
+input:invalid {
+    border:solid 1px orangered;
+}
+
+
+
+
 
 
 // npm run watch
