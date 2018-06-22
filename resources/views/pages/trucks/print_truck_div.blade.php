@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>LR Print</title>
+    <title>Print Truck {{ $trucks[0]->id }}</title>
     <link rel="stylesheet" href="/public/css/app.css">
     <link rel="stylesheet" href="/public/css/print.css">
 </head>
 
 <body>
+    <br>
     @foreach ($trucks as $truck)
-    <br><br>
+    
     <div class="text-center">
         <h3 style="margin-bottom:-1px;font-size:10px;text-decoration:underline">C O N F I D E N T I A L</h3>
     </div>
@@ -41,7 +42,7 @@
                 </td>
             </tr>
         </table>
-        <br>
+        
         <article>
             <br>
             <table class="inventory">
@@ -49,7 +50,7 @@
                     <tr>
                         <th colspan=2 style="background-color: #ccc;text-align: center;">
                             <span style="font-weight:700;font-size:13px;">
-                                            TRUCK INFORMATION
+                                            TRUCK INFORMATION - Truck ID: {{ $truck->id }}
                                     </span>
                         </th>
                     </tr>
@@ -80,16 +81,14 @@
                                 {{ $truck->purch_date }}
                             </span>
                         </th>
-                        <th style="width:50%;text-align: left">
+                    {{--    <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Sold Date
                             </span>
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->sold_date }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th> --}}                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Status
@@ -98,6 +97,9 @@
                                 {{ $truck->status }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Make/Model
@@ -105,9 +107,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->make }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Wheels
@@ -116,6 +116,9 @@
                                 {{ $truck->wheels }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Engine Num
@@ -123,9 +126,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->engine_num }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Chassis Num
@@ -134,6 +135,9 @@
                                 {{ $truck->ch_num }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 GWT
@@ -141,9 +145,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->GWT }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 NWT
@@ -152,6 +154,9 @@
                                 {{ $truck->NWT }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 5Yr-Permit
@@ -159,9 +164,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->fyrpermit }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 5Yr-Pmt. Exp.
@@ -170,6 +173,9 @@
                                 {{ $truck->fyrpermitexp }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 NP Number
@@ -177,9 +183,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->npnum }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 NP Exp
@@ -188,6 +192,9 @@
                                 {{ $truck->npexp }}
                             </span>
                         </th>
+                    </tr>
+                    <tr>
+
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Fitness Exp.
@@ -195,9 +202,7 @@
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->fitexp }}
                             </span>
-                        </th>
-                    </tr>
-                    <tr>
+                        </th>                        
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 PUC Exp.
@@ -206,8 +211,8 @@
                                 {{ $truck->pucexp }}
                             </span>
                         </th>
-                        <th></th>
                     </tr>
+
                 </thead>
             </table>
             <table class="inventory">
@@ -215,18 +220,18 @@
                     <tr>
                         <th colspan=2 style="background-color: #ccc;text-align: center;">
                             <span style="font-weight:700;font-size:13px;">
-                                        TANK INFORMATION
+                                        TANK INFORMATION - Tank ID: {{ $truck->tanknum }}
                                 </span>
                         </th>
                     </tr>
-                    <th style="width:50%;text-align: left">
+                 {{--   <th style="width:50%;text-align: left">
                         <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Tank Number
                             </span>
                         <span>
                                 {{ $truck->tanknum }}
                             </span>
-                    </th>
+                    </th> --}}
                     <th style="width:50%;text-align: left">
                         <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Tank Desc.
@@ -234,7 +239,15 @@
                         <span>
                                 {{ $truck->tank_desc }}
                             </span>
-                    </th>
+                    </th>                        
+                    <th style="width:50%;text-align: left">
+                            <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
+                                Tank Type
+                            </span>
+                            <span style="font-size: 12px;font-weight: 600;">
+                                {{ $truck->tanktype }}
+                            </span>
+                        </th>
                     </tr>
                     <tr>
                         <th style="width:50%;text-align: left">
@@ -247,29 +260,11 @@
                         </th>
                         <th style="width:50%;text-align: left">
                             <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
-                                Tank Type
-                            </span>
-                            <span style="font-size: 12px;font-weight: 600;">
-                                {{ $truck->tanktype }}
-                            </span>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="width:50%;text-align: left">
-                            <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
                                 Tank MOC
                             </span>
                             <span style="font-size: 12px;font-weight: 600;">
                                 {{ $truck->tankmoc }}
                             </span>
-                        </th>
-                        <th style="width:50%;text-align: left">
-                            <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
-                                    Rule 43 Desc.
-                                </span>
-                            <span style="font-size: 12px;font-weight: 600;">
-                                    {{ $truck->rule43desc }}
-                                </span>
                         </th>
                     </tr>
                     <tr>
@@ -353,7 +348,15 @@
                                 {{ $truck->shellthk }}
                             </span>
                         </th>
-                        <th></th>
+                            <th style="width:50%;text-align: left">
+                                <span style="font-weight:500;font-size: 12px;width: 90px;display: inline-block;">
+                                        Rule 43 Desc.
+                                    </span>
+                                <span style="font-size: 12px;font-weight: 600;">
+                                        {{ $truck->rule43desc }}
+                                    </span>
+                            </th>
+
                     </tr>
                 </thead>
             </table>
@@ -406,7 +409,7 @@
                     <tr>
                         <th style="width:100%;text-align: left">
                             <span style="font-size: 12px;font-weight: 600;">
-                                    {{ str_replace(Chr(' '),'<br>', $truck->notes) }}<hr><hr><hr><hr><hr><hr><hr>
+                                   <pre>{{ $truck->notes }}</pre><hr><hr><hr><hr><hr><hr><hr>
                             </span>
                         </th>
                     </tr>
@@ -417,7 +420,7 @@
     <div class="text-center">
         <h3 style="margin-top:2px;font-size:12px;">Unauthorised Use of this Information is Prohibited</h3>
     </div>
-    <div class="hidethis" style="position: fixed;left:600px;top:90px;">
+    <div class="hidethis" style="position: fixed;left:600px;top:75px;">
         <button class="btn btn-success" onclick="window.print();">Print Truck Card</button>
     </div>
     @endforeach

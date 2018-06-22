@@ -8,15 +8,15 @@ Route::get('login', array('uses' => 'HomeController@showLogin'));
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('logout', array('uses' => 'HomeController@doLogout'));
 
-Route::get('/hello', function () {
-    return "<h1>Test</h1>";
- });
+//Route::get('/hello', function () {
+//    return "<h1>Test</h1>";
+// });
 
 Route::get('/', 'PagesController@index' );
     
-Route::get('/users/{id}', function ($id) {
-    return '<h1>This is user ' . $id. '</h1>';
- });
+//Route::get('/users/{id}', function ($id) {
+//    return '<h1>This is user ' . $id. '</h1>';
+// });
 
  Route::Resource('trucks','TruckController');
  Route::Resource('contacts','ContactController');

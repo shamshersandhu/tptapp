@@ -64,6 +64,15 @@ function myalert(title, msg, clr) {
     });
 }
 
+function hide_modal(mname) {
+    event.preventDefault();
+    //alert('here');
+    $('#' + mname).slideUp(1000);
+    sleep(1000).then(()=>{  
+        $('#' + mname).modal('hide'); });
+    return false;
+}
+
 function checkstr(chklist) {
     var msg = "";
     var ret = true;
@@ -77,6 +86,14 @@ function checkstr(chklist) {
         myalert("Message", msg, "red");
     }
     return ret;
+}
+
+function check_empty(inp,desc) {
+    var msg="";
+    if (inp == "") {
+        msg= "&bull; " + desc + " must be entered<br>";
+    }
+    return msg;
 }
 
 
@@ -185,7 +202,7 @@ function toggledatetime(val) {
    // alert("Date: " + dp + "    Time: " + tp);
     ddate = dp.split('-');
     var mdate = ddate.reverse().join('-') + " " + tp;
-   // alert("in->" + val + "   out->" + mdate);
+    //alert("in->" + val + "   out->" + mdate);
     return mdate;
 }
 

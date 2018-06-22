@@ -1,14 +1,14 @@
-<div class="modal" tabindex="-2" id="mdl_add_trp" role="dialog">
+<div class="modal" tabindex="-3" id="mdl_add_trp" role="dialog">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div style="background-color:#C4BBF5;padding:6px 12px 4px 12px;" class="modal-header">
-                        <img src={{ URL::to('/') }}/public/assets/images/trkmov.png  alt="Truck" style="margin-right:16px;margin-bottom:-3px;margin-top:-7px">
+                    <div class="modal-header modal-hd">
+                            <img src={{ URL::to('/') }}/public/assets/images/trkmov.png  alt="Truck" style="margin-right:16px;margin-bottom:-3px;margin-top:-7px">
                     <h5 id="addtrptitle" class="modal-title">Add New Trip</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div style="background-color:#D8D1F7;padding:6px 12px 4px 12px;" id="trp_area_add" class="modal-body">
+                <div id="trp_area_add" class="modal-body modal-bd">
                     <div id="msgdivadd"></div>
                     <form id="addtrp">
                         <input type="hidden" id="token" value="{!! csrf_token() !!}">
@@ -21,7 +21,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Truck</span>
                                         </div>
-                                        <select class="form-control form-control-sm" id="truck">
+                                        <select aria-required=”true” type="text"  required class="form-control form-control-sm" id="truck">
                                                 <option value=""></option>
                                                 @foreach($trucks as $truck)
                                                     <option value="{{$truck->id}}">{{$truck->regnum}}</option>
@@ -34,7 +34,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Driver1</span>
                                         </div>
-                                        <select class="form-control form-control-sm" id="driver1">
+                                        <select required  type="text" class="form-control form-control-sm" id="driver1">
                                                                     <option value=""></option>
                                                                     @foreach($drivers as $driver)
                                                                     <option value="{{$driver->id}}">{{$driver->name}}</option>
@@ -48,7 +48,7 @@
                                             <span class="input-group-text">Driver2</span>
                                         </div>
                                         <select class="form-control form-control-sm" id="driver2">
-                                                                    <option value="None">None</option>
+                                                                    <option value="">No Driver 2</option>
                                                                     @foreach($drivers as $driver)
                                                                     <option value="{{$driver->id}}">{{$driver->name}}</option>
                                                                 @endforeach 
@@ -63,7 +63,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Origin</span>
                                         </div>
-                                        <select onchange="getdistance('add')" class="form-control form-control-sm" id="origin">
+                                        <select required  type="text" onchange="getdistance('add')" class="form-control form-control-sm" id="origin">
+                                            <option Value=""></option>
                                                 @foreach($locations as $origin)
                                                 <option value="{{$origin->id}}">{{$origin->name}}</option>
                                             @endforeach                                                               
@@ -75,7 +76,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Arrival-Date Org</span>
                                         </div>
-                                        <input class="form-control form-control-sm" id="orgarrdt" style="background-color: #fff;" readonly>
+                                        <input autocomplete="off" required type="text" class="form-control form-control-sm" id="orgarrdt" style="background-color: #fff;" >
                                     </div>
                                 </div>
                                 <div class="col">
@@ -83,7 +84,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Load Date</span>
                                         </div>
-                                        <input class="form-control form-control-sm" id="loaddate" style="background-color: #fff;" readonly>
+                                        <input autocomplete="off" required  type="text"class="form-control form-control-sm" id="loaddate" style="background-color: #fff;" >
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +94,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Destination</span>
                                         </div>
-                                        <select onchange="getdistance('add')" class="form-control form-control-sm" id="dest">
+                                        <select required type="text" onchange="getdistance('add')" class="form-control form-control-sm" id="dest">
+                                                <option Value=""></option>
                                                 @foreach($locations as $dest)
                                                 <option value="{{$dest->id}}">{{$dest->name}}</option>
                                             @endforeach                                                           
@@ -105,7 +107,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Arrival-Date Dst</span>
                                         </div>
-                                        <input class="form-control form-control-sm" id="arrdate" style="background-color: #fff;" readonly>
+                                        <input autocomplete="off" class="form-control form-control-sm" id="arrdate" style="background-color: #fff;" readonly>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -113,7 +115,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Delivery Date</span>
                                         </div>
-                                        <input class="form-control form-control-sm" id="deldate" style="background-color: #fff;" readonly>
+                                        <input  autocomplete="off" class="form-control form-control-sm" id="deldate" style="background-color: #fff;" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +151,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Product</span>
                                         </div>
-                                        <input class="form-control form-control-sm" id="product" style="background-color: #fff;">
+                                        <input required  type="text" class="form-control form-control-sm" id="product" style="background-color: #fff;">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -157,7 +159,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Loaded Qty</span>
                                         </div>
-                                        <input onChange="chkqty('add');" class="form-control form-control-sm" type="number" id="qtyload" style="background-color: #fff;">
+                                        <input required onChange="chkqty('add');" class="form-control form-control-sm" type="number" id="qtyload" style="background-color: #fff;">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                                                         <select id="unit">
@@ -218,7 +220,7 @@
                                     <button style="width:70px;font-size:13px;margin-top:7px;" onclick=save_trp(); type="submit" class="btn btn-sm btn-info ">Save</button>
                                 </div>
                                 <div class="col text-center ">
-                                    <button style="width:70px;font-size:13px;margin-top:7px; " type="submit " class="btn btn-sm btn-danger" data-dismiss="modal ">Cancel</button>
+                                    <button style="width:70px;font-size:13px;margin-top:7px;" onclick="event.preventDefault();$('#mdl_add_trp').modal('hide');"  class="btn btn-sm btn-danger" >Cancel</button>
                                 </div>
                                 <div class="col ">
                                 </div>

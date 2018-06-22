@@ -1,8 +1,8 @@
 <div class="modal" tabindex="-1" id="mdl_view_con" role="dialog">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div style="background-color:#C4BBF5;" class="modal-header">
-                        <img src={{ URL::to('/') }}/public/assets/images/con.png  alt="Contact" 
+                    <div class="modal-header modal-hd">
+                            <img src={{ URL::to('/') }}/public/assets/images/con.png  alt="Contact" 
                         style="height: 41px;width: auto;margin-right: 16px;margin-bottom: -7px;margin-top: -6px;">
                         <h5 id="viewcontitle" class="modal-title"></h5>
                     <input id='thiscon' type='hidden'>
@@ -12,7 +12,7 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
-                <div style="background-color:#D8D1F7" id="con_area" class="modal-body">
+                <div id="con_area" class="modal-body modal-bd">
                     <table id='conviewtab' width="100%" style="border-collapse: collapse;" class='table table-sm'>
                         <thead>
                             <tr>
@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div style="background-color:#C4BBF5" class="modal-footer">
+                <div class="modal-footer modal-bd">
                     <div class="row">
                         <div class="col">
                             <button onclick="modal_hide('mdl_view_con');" type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>

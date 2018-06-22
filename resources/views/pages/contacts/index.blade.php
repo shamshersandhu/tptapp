@@ -30,7 +30,7 @@ $MODAL_BG1="#C4BBF5";
             
         @else
         @foreach($contacts as $contact)
-            <tr>
+        <tr style="cursor: pointer">
             <td title="View Record" onclick='show_con("{{$contact->id}}")'>{{$contact->id}}</td>
             <td title="View Record" onclick='show_con("{{$contact->id}}")'>{{$contact->name}}</td>
             <td title="View Record" onclick='show_con("{{$contact->id}}")'>{{$contact->type}}</td>

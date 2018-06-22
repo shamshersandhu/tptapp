@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #444;">
+<nav class="navbar navbar-expand-md navbar-dark" id="mainnavtop">
   <a class="navbar-brand" style="margin-top:0px;margin-bottom:0px;border:none;padding-top:0px;padding-bottom:0px" href="/">
     <img src={{ URL::to('/') }}/public/assets/images/cw_logo_lg.jpg 
-          style="margin-top:-7px;margin-bottom:-7px;border:none; padding-top:0px;padding-bottom:0px;width:170px;height:55px;" alt="CountryWide">
+          style="margin-top: -7px;margin-bottom: -7px;padding-left: 0px;mar;margin-left: -14px;der: none;padding-top: 0px;padding-bottom: -1px;width: 177px;height: 53px;" alt="CountryWide">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainnav" aria-controls="mainnav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@
       </li>
       <li>
         <div class="pull-right">
-          <a style='text-align:center;color:aquamarine;position:fixed;right:25px;top:9px;width:70px;line-height:80%' href='logout'>
+          <a class="userloggedin" href='/logout'>
               <small>
               @php if (Auth::guest()) { $usernow=""; } else { ($usernow=Auth::user()->name);echo "$usernow LogOut"; } 
               @endphp

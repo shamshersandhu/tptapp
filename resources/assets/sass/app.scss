@@ -1,16 +1,43 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,600");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 $icon-font-path: '/css/fonts/';
 .navbar-laravel {
-  background-color: #fff;
+  background-color: #fef;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+/* @media (min-width: 768px) { */
+  #mainnavtop {
+    background-color: rgb(25, 2, 46) !important;
+  }
+  .navbar-dark .navbar-nav .nav-link:hover,
+  .navbar-dark .navbar-nav .nav-link:focus {
+    color: rgba(223, 226, 5, 1) !important;
+    font-size: 16px !important;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+  }
+  .userloggedin {
+    text-align: center;
+    color: #13f130d8;
+    position: fixed;
+    right: 33px;
+    top: 17px;
+    width: 100px;
+    line-height: 89%;
+    vertical-align: middle;
+    font-size: 15px;
+  }
+  .userloggedin:hover {
+    font-size: 16px !important;
+    color: #ecfd02f1;
+    text-decoration: none;
+  }
+/* } */
 
 @import 'custom.scss';

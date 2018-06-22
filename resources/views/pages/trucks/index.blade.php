@@ -28,7 +28,7 @@ $MODAL_BG1="#C4BBF5";
     <tbody>
 @if(count($trucks)>0)
         @foreach($trucks as $truck)
-        <tr>
+        <tr style="cursor: pointer">
             @foreach($owners as $owner)
                 @if ($owner->id==$truck->owner) 
                         @php

@@ -1,14 +1,14 @@
 <div class="modal" tabindex="-2" id="mdl_view_trk" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div style="background-color:#C4BBF5;padding:6px;" class="modal-header">
+            <div class="modal-header modal-hd">
                 <img src={{ URL::to( '/') }}/public/assets/images/trk.png alt="Truck" style="margin-right:16px;margin-bottom:2px;margin-top:-2px">
                 <h5 id="viewtrktitle" class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
             </div>
-            <div style="background-color:#D8D1F7;padding:6px;" id="trk_area_view" class="modal-body">
+            <div id="trk_area_view" class="modal-body modal-bd">
                 <div id="msgdivview"></div>
                 <form id="viewtrk">
                     <input type="hidden" id="vtoken" value="{!! csrf_token() !!}">
@@ -338,8 +338,8 @@
                                 <button style="width:110px;font-size:13px;margin-top:7px;" onclick=print_trk(); type="submit" class="btn btn-sm btn-info ">Print Truck Card</button>
                             </div>
                             <div class="col text-center ">
-                                <button style="width:110px;font-size:13px;margin-top:7px; " type="submit " class="btn btn-sm btn-danger" data-dismiss="modal ">Cancel</button>
-                            </div>
+                                    <button onclick="hide_modal('mdl_view_trk');" style="width:70px;font-size:13px;margin-top:7px;" class="btn btn-sm btn-danger">Close</button>
+                                </div>
                             <div class="col ">
                             </div>
                         </div>

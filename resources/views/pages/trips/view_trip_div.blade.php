@@ -1,8 +1,8 @@
 <div class="modal" tabindex="-1" id="mdl_view_trp" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div style="background-color:{{$MODAL_BG1}};" class="modal-header">
-                    <img src={{ URL::to('/') }}/public/assets/images/trkmov.png  alt="Truck" style="margin-right:16px;margin-bottom:-3px;margin-top:-7px">
+                <div class="modal-header modal-hd">
+                        <img src={{ URL::to('/') }}/public/assets/images/trkmov.png  alt="Truck" style="margin-right:16px;margin-bottom:-3px;margin-top:-7px">
 
                 <h5 id="viewtrptitle" class="modal-title"></h5>
                 <input readonly id='thistrp' type='hidden'>
@@ -11,7 +11,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div style="background-color:{{$MODAL_BG2}}" id="trp_area" class="modal-body">
+            <div id="trp_area" class="modal-body modal-bd">
                 <input type="hidden" id="vtoken" value="{{ csrf_token() }}">
                 <input type="hidden" id="vcreator" value='{{ Auth::user()->name }}'>
                 <input type="hidden" id="vid">
@@ -182,7 +182,7 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color:{{$MODAL_BG1}}" class="modal-footer">
+            <div class="modal-footer modal-bd">
                 <div class="row">
                     <div class="col">
                         <button onclick="modal_hide('mdl_view_trp');" type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>

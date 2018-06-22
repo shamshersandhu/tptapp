@@ -1,14 +1,14 @@
 <div class="modal" tabindex="-2" id="mdl_add_con" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div style="background-color:#C4BBF5;" class="modal-header">
-                <img src={{ URL::to( '/') }}/public/assets/images/con.png alt="Contact" style="height: 41px;width: auto;margin-right: 16px;margin-bottom: -7px;margin-top: -6px;">
+                <div class="modal-header modal-hd">
+                        <img src={{ URL::to( '/') }}/public/assets/images/con.png alt="Contact" style="height: 41px;width: auto;margin-right: 16px;margin-bottom: -7px;margin-top: -6px;">
                 <h5 id="addcontitle" class="modal-title">Add New Contact</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div style="background-color:#D8D1F7;padding:6px;" id="con_area_add" class="modal-body">
+            <div id="con_area_add" class="modal-body modal-bd">
                 <div id="msgdivadd"></div>
                 <input type="hidden" id="id">
                 <input type="hidden" id="token" value="{!! csrf_token() !!}">
@@ -21,7 +21,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Name</span>
                                     </div>
-                                    <input class="form-control" required id="name" maxlength="60" placeholder="Person or Company Name">
+                                    <input required type="text" class="form-control" id="name" maxlength="60" placeholder="Person or Company Name">
                                 </div>
                             </div>
                             <div class="col">
@@ -41,8 +41,9 @@
                                             <option value="STAFF" selected>Staff or Employee</option>
                                             <option  value="DRIVER">Driver</option>
                                             <option value="CLIENT">Client or Company</option>
-                                            <option value="LOCATION">Location</option>
+                                            <option value="LOCATION">Loading/Unloading Location</option>
                                             <option value="SERVICE_PROVIDER">Service Provider</option>
+                                            <option value="WORKSHOP">Workshop</option>
                                             <option value="MISC">Misc</option>
                                          </select>
                                 </div>
@@ -62,7 +63,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Phone 1</span>
                                     </div>
-                                    <input class="form-control" id="phone1" maxlength="20" placeholder="Main Phone">
+                                    <input required class="form-control" id="phone1" maxlength="20" placeholder="Main Phone">
                                 </div>
                             </div>
                             <div class="col">

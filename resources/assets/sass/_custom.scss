@@ -1,5 +1,9 @@
 body {    background: white;}
 
+:required:invalid {border-color: rgb(243, 170, 170); }
+:required:valid { border-color: none; }
+
+
 #menu {    display: none;}
 #wrapper,
 #content {width: auto;margin: 0 5%;padding: 0;border: 0;float: none !important;color: black;background: transparent;}
@@ -8,6 +12,18 @@ body {    background: white;}
 .form-control::-moz-placeholder {    color: #ccc;}
 .form-control:-ms-input-placeholder {    color: #ccc;}
 .form-control::-ms-input-placeholder {    color: #ccc;}
+
+
+.modal-hd {
+    background-color:#72889e;
+    padding:6px;
+}
+
+.modal-bd {
+background-color:#a8bad0;;
+;padding:6px;
+}
+
 
 .mylabel {
     font-size: 10px;
@@ -50,11 +66,11 @@ textarea {
 .myformgroup {
     margin-bottom: 3px;
     padding: 6px;
-    border: 1px solid rgba(140, 15, 140, 0.28);
+    border: 1px solid #6b93bb;
 }
 
 .myformgroup2 {
-    border: 1px solid rgba(140, 15, 140, 0.28);
+    border: 1px solid #6b93bb;
     padding: 6px;
 }
 

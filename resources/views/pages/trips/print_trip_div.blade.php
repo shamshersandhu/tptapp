@@ -49,7 +49,7 @@
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAAhAQMAAAB0jXzPAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUKJFj+FNn8bj/x/8++8d9Fv/7fzz+Z/EYyP5n8afwB8Oo3KjcqNyAyQEA2TdePc9fbQMAAAAASUVORK5CYII=" alt="barcode" /><br>
                     <br><br>
                     <span style="line-height:2.4em;" class="coname">Lorry Receipt No: </span>
-                    <span style="line-height:1.5em;font-family:Courier;font-weight:900;font-size:16px">14315</span><br>
+                    <span style="line-height:1.5em;font-family:Courier;font-weight:900;font-size:16px">{{ $trip->id}}</span><br>
                     <span class="coname">Date:<b>{{ $trip->lr_date}}</b></span><br>
                     <span class="coname">Vehicle No:<b>{{ $trip->regnum}}</b></span><br>
                     <span class="coname">Invoice No:<b>{{ $trip->invoice}} </b></span><br>

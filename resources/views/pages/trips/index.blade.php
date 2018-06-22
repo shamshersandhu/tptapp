@@ -28,7 +28,7 @@ $MODAL_BG1="#C4BBF5";
     <tbody>
 @if(count($trips)>0)
         @foreach($trips as $trip)
-        <tr>
+        <tr style="cursor: pointer">
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->id}}</td>
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->regnum}}</td>
             <td title="View Record" onclick='show_trp("{{$trip->id}}")'>{{$trip->origin_name}}</td>

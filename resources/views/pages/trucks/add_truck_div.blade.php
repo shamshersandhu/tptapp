@@ -1,14 +1,14 @@
 <div class="modal" tabindex="-2" id="mdl_add_trk" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div style="background-color:#C4BBF5;padding:6px 12px 4px 12px;" class="modal-header">
-                <img src={{ URL::to( '/') }}/public/assets/images/trk.png alt="Truck" style="margin-right:16px;margin-bottom:2px;margin-top:-2px">
+                <div class="modal-header modal-hd">
+                        <img src={{ URL::to( '/') }}/public/assets/images/trk.png alt="Truck" style="margin-right:16px;margin-bottom:2px;margin-top:-2px">
                 <h5 id="addtrktitle" class="modal-title">Add New Truck</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
             </div>
-            <div style="background-color:#D8D1F7;padding:6px 12px 4px 12px;" id="trk_area_add" class="modal-body">
+            <div id="trk_area_add" class="modal-body modal-bd">
                 <div id="msgdivadd"></div>
                 <form id="addtrk">
                     <input type="hidden" id="token" value="{!! csrf_token() !!}">
@@ -21,7 +21,7 @@
                                     <div class='input-group-prepend'>
                                         <span class='input-group-text'>Reg. Num</span>
                                     </div>
-                                    <input class='form-control form-control-sm' id='regnum' style='background-color: #fff;'>
+                                    <input  type="text" required class='form-control form-control-sm' id='regnum' style='background-color: #fff;'>
                                 </div>
                             </div>
                             <div class='col'>
@@ -29,7 +29,8 @@
                                     <div class='input-group-prepend'>
                                         <span class='input-group-text'>Owner</span>
                                     </div>
-                                    <select class="form-control" id="owner">
+                                    <select type="text" required class="form-control" id="owner">
+                                        <option value="">Select Owner</option>
                                             @foreach($owners as $owner)
                                                 <option value="{{$owner->id}}">{{$owner->name}}</option>
                                            @endforeach 
@@ -72,7 +73,7 @@
                                     <div class='input-group-prepend'>
                                         <span class='input-group-text'>Make/Model</span>
                                     </div>
-                                    <input class='form-control form-control-sm' id='make' style='background-color: #fff;'>
+                                    <input type="text" required class='form-control form-control-sm' id='make' style='background-color: #fff;'>
                                 </div>
                             </div>
                             <div class='col'>
@@ -346,7 +347,7 @@
                                 <button style="width:70px;font-size:13px;margin-top:7px;" onclick=save_trk(); type="submit" class="btn btn-sm btn-info ">Save</button>
                             </div>
                             <div class="col text-center ">
-                                <button style="width:70px;font-size:13px;margin-top:7px; " type="submit " class="btn btn-sm btn-danger" data-dismiss="modal ">Cancel</button>
+                                <button onclick="hide_modal('mdl_add_trk');" style="width:70px;font-size:13px;margin-top:7px;" class="btn btn-sm btn-danger">Cancel</button>
                             </div>
                             <div class="col ">
                             </div>

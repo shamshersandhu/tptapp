@@ -1,8 +1,11 @@
 function print_trk() {
+    event.preventDefault();
+    $('#mdl_view_trk').modal('hide');
     id=document.getElementById('vid').value;
     url="/trucks/printtrk/" + id;
     var win = window.open(url, '_blank');
     win.focus();
+    return false;
 }
 
 function show_trk(id) {
@@ -14,17 +17,8 @@ function show_trk(id) {
             url: '/trucks/show/' + id,
             method: 'GET',
             datatype: 'text',
-            // data: {
-            //     "_token": "{!! csrf_token() !!}",
-            //     id: id,
-            //},
             success: function (response) {
-           //     alert(response[0].ownname);
             var truck=response[0];
-           // alert(truck.id);
-            //alert("Truck is " + truck.ownname);
-           // document.getElementById('thistrk').value= truck.id;
-           //document.getElementById('thistrk').value= truck.id;
            document.getElementById("viewtrktitle").innerHTML = "View Truck Number: " + truck.id;
            document.getElementById("vid").value = truck.id;
            document.getElementById("vregnum").value = truck.regnum;
@@ -66,7 +60,6 @@ function show_trk(id) {
             $("#mdl_view_trk").modal('show');
         }
     });
-
 }
 
 function delete_trk(id) {
@@ -136,7 +129,6 @@ function add_trk() {
     initdate("","tankcalexp");
     initdate("","airtestdt");
     initdate("","insexp");
-
     $("#mdl_add_trk").modal('show');
 }
 
@@ -146,13 +138,8 @@ function edit_trk(id) {
         url: '/trucks/edittrk/' + id,
         method: 'GET',
         datatype: 'text',
-        // data: {
-        //     "_token": "{!! csrf_token() !!}",
-        //     id: id,
-        //},
         success: function (response) {
             //SELECT concat('document.getElementById("e',COLUMN_NAME,'").value = truck.',COLUMN_NAME,';') FROM `COLUMNS` WHERE table_schema='tptdb' and table_name='trucks'
-
             var truck = response;
             document.getElementById("edittrktitle").innerHTML = "Edit Truck Number: " + truck.id;
             document.getElementById("eid").value = truck.id;
@@ -194,7 +181,6 @@ function edit_trk(id) {
             document.getElementById("einspolpro").value = truck.inspolpro;
             initdate(truck.insexp,"einsexp");
             document.getElementById("enotes").value = truck.notes;
-
             $('#mdl_edit_trk').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -202,7 +188,6 @@ function edit_trk(id) {
             $("#mdl_edit_trk").modal('show');
             // $('#con_area').html=response;
         }
-
     });
 }
 
@@ -248,17 +233,16 @@ function save_trk() {
     jinsexp = toggledate($("#insexp").val());
     jnotes = $("#notes").val();
 
-
-    if (jregnum == "") {
-        myalert("Message", "Reg. Number must be entered", 'red');
+    var chkmsg="";
+    chkmsg += check_empty(jregnum,'Registration Number');
+    chkmsg += check_empty(jowner,'Truck Owner' );
+    chkmsg += check_empty(jmake,'Make and Model' );
+    
+    if (chkmsg != "") {
+        myalert("Message",chkmsg,'red');
         return false;
     }
-    if (jmake == "") {
-        myalert("Message", "Make and Model must be entered", 'red');
-        return false;
-    }
 
-    //alert(jdata.regnum);
     //SELECT concat('"',column_name,'": j',column_name,',') FROM `COLUMNS` WHERE table_schema='tptdb' and table_name='trucks'
     $.ajax({
         data: {
@@ -363,15 +347,15 @@ function save_edit_trk() {
     jinsexp = toggledate($("#einsexp").val());
     jnotes = $("#enotes").val();
 
-    if (jregnum == "") {
-        myalert("Message", "regnum must be entered", "red");
+    var chkmsg="";
+    chkmsg += check_empty(jregnum,'Registration Number');
+    chkmsg += check_empty(jowner,'Truck Owner' );
+    chkmsg += check_empty(jmake,'Make and Model' );
+    
+    if (chkmsg != "") {
+        myalert("Message",chkmsg,'red');
         return false;
     }
-    if (jmake == "") {
-        myalert("Message", "Phone 1 must be entered", "red");
-        return false;
-    }
-    //alert(jdata.regnum);
     //SELECT concat('"',column_name,'": j',column_name,',') FROM `COLUMNS` WHERE table_schema='tptdb' and table_name='trucks'
     $.ajax({
         data: {
@@ -432,8 +416,7 @@ function save_edit_trk() {
                 $("#mdl_edit_trk").modal('hide');
                 location.reload();
             });
- 
-        }
+         }
     });
 }
 
@@ -477,5 +460,4 @@ function makepdf() {
               )
         }
     });
- 
-}
+ }

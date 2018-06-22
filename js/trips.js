@@ -26,11 +26,14 @@ function chkqty(type) {
     return;
 }
 
-function print_lr() {
+function print_lr() {    
+    event.preventDefault();
+   // $('#mdl_view_trp').modal('hide');
     id=document.getElementById('thistrp').value;
     url="/trips/printtrp/" + id;
     var win = window.open(url, '_blank');
     win.focus();
+    return false;
 }
 
 function show_trp(id) {
@@ -61,7 +64,6 @@ function show_trp(id) {
             document.getElementById("vinvoice").value = trip.invoice;
             document.getElementById("vponum").value = trip.ponum;
             document.getElementById("vproduct").value = trip.product;            
-           // alert(trip.qtyload);
             document.getElementById("vqtyload").value = trip.qtyload.toString() + " " + trip.unit;
             document.getElementById("vqtydel").value = (trip.qtydel ? trip.qtydel.toString() + " " + (trip.qtydel ? trip.unit : "") : "");
             document.getElementById("vorgarrdt").value = toggledatetime(trip.orgarrdt);
@@ -274,7 +276,12 @@ function save_trp() {
     jorgarrdt = toggledatetime($("#orgarrdt").val());
     jarrdate = toggledatetime($("#arrdate").val());
     jdeldate = toggledatetime($("#deldate").val());
+    //alert(jloaddate);
     //getDistance(jorigin,jdest);
+    if (jtruck == "") {
+        myalert("Message", "Truck must be entered", "red");
+        return false;
+    }
     if (jdriver1 == "") {
         myalert("Message", "Driver 1 must be entered", "red");
         return false;
@@ -282,12 +289,29 @@ function save_trp() {
     if (jorigin == "") {
         myalert("Message", "Origin must be entered", "red");
         return false;
+    } 
+
+    if (jorgarrdt.length<10) {
+        myalert("Message", "Arrival Date must be entered", "red");
+        return false;
+    }  
+    if (jloaddate.length<10) {
+        myalert("Message", "Load Date must be entered", "red");
+        return false;
+    }    
+    if (jdest == "") {
+        myalert("Message", "Destination must be entered", "red");
+        return false;
+    } 
+    if (jproduct=="") {
+        myalert("Message", "Product must be entered", "red");
+        return false;
     }
     if (jqtyload=="") {
         myalert("Message", "Loaded Quantity must be entered", "red");
         return false;
     }
-    if (parseInt(jqtydel) > parseInt(jqtyload)) {
+     if (parseInt(jqtydel) > parseInt(jqtyload)) {
         myalert("Message", "Delivered Quantity cannot be more than Loaded Quantity", "red");
         return false;
     }
@@ -361,7 +385,12 @@ function save_edit_trp() {
     jgstparty = $("#egstparty").val();
     jnotes = $("#enotes").val();
     jcreator = $("#ecreator").val();
+    //alert('jloaddate=' + jloaddate.length);
     //alert(jtoken + "<br>" + $('meta[id="csrf-token"]').attr('content'));
+    if (jtruck == "") {
+        myalert("Message", "Truck must be entered", "red");
+        return false;
+    }
     if (jdriver1 == "") {
         myalert("Message", "Driver 1 must be entered", "red");
         return false;
@@ -369,15 +398,33 @@ function save_edit_trp() {
     if (jorigin == "") {
         myalert("Message", "Origin must be entered", "red");
         return false;
+    } 
+
+    if (jorgarrdt.length<10) {
+        myalert("Message", "Arrival Date must be entered", "red");
+        return false;
+    }  
+    if (jloaddate.length<10) {
+        myalert("Message", "Load Date must be entered", "red");
+        return false;
+    }    
+    if (jdest == "") {
+        myalert("Message", "Destination must be entered", "red");
+        return false;
+    } 
+    if (jproduct=="") {
+        myalert("Message", "Product must be entered", "red");
+        return false;
     }
     if (jqtyload=="") {
         myalert("Message", "Loaded Quantity must be entered", "red");
         return false;
     }
-    if (parseInt(jqtydel) > parseInt(jqtyload)) {
+     if (parseInt(jqtydel) > parseInt(jqtyload)) {
         myalert("Message", "Delivered Quantity cannot be more than Loaded Quantity", "red");
         return false;
     }
+
 
        //SELECT concat('"',column_name,'": j',column_name,',') FROM `COLUMNS` WHERE table_schema='tptdb' and table_name='trips'
     $.ajax({
